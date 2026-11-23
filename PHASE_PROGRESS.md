@@ -99,4 +99,7 @@
 - PDF reports are implemented.
 - Password reset and email verification are implemented behind configured SMTP delivery. Requests fail honestly with 503 until SMTP is configured; verification/reset tokens expire after one hour and are stored only as SHA-256 hashes.
 - Added Docker Compose deployment packaging, a GitHub Actions CI workflow, MIT licensing, and container smoke configuration.
+- Backend tests: **31 passed**; backend Ruff: **passed**; Alembic schema check: **passed**.
+- Frontend tests: **2 passed**; frontend lint: **passed**; production build: **passed**.
+- Docker and Docker Compose configuration is included. A container build could not be executed locally because the Docker Desktop engine was unavailable, so CI and an external container smoke run remain the final container verification.
 - Redis-backed multi-worker rate limiting and full public deployment hardening remain follow-on deployment work.
