@@ -1,0 +1,62 @@
+[
+  {
+    "id": "benign-public-suffix",
+    "label": "benign",
+    "url": "https://www.example.co.uk/help",
+    "expected_risk": "low",
+    "required_rules": []
+  },
+  {
+    "id": "ip-host-redirect",
+    "label": "synthetic-suspicious",
+    "url": "http://192.0.2.10:8443/login?next=one&redirect=two",
+    "expected_risk": "high",
+    "required_rules": [
+      "host.ip_address",
+      "url.unusual_port",
+      "url.redirect_parameters"
+    ]
+  },
+  {
+    "id": "userinfo-destination-confusion",
+    "label": "synthetic-suspicious",
+    "url": "https://paypal.com@evil.example/path",
+    "expected_risk": "high",
+    "required_rules": ["url.userinfo"]
+  },
+  {
+    "id": "mixed-script-lookalike",
+    "label": "synthetic-suspicious",
+    "url": "https://раypal.example.com/signin",
+    "expected_risk": "high",
+    "required_rules": ["host.mixed_script_lookalike"]
+  },
+  {
+    "id": "visible-brand-in-different-domain",
+    "label": "synthetic-suspicious",
+    "url": "https://paypal-login.example.com/login/verify",
+    "expected_risk": "high",
+    "required_rules": ["host.brand_term_mismatch"]
+  },
+  {
+    "id": "single-character-brand-lookalike",
+    "label": "synthetic-suspicious",
+    "url": "https://paypa1.com/signin",
+    "expected_risk": "high",
+    "required_rules": ["host.brand_term_mismatch"]
+  },
+  {
+    "id": "credential-prompt-over-http",
+    "label": "synthetic-suspicious",
+    "url": "http://example.com/account/login",
+    "expected_risk": "high",
+    "required_rules": ["url.http_credential_prompt"]
+  },
+  {
+    "id": "known-shortener-not-followed",
+    "label": "ambiguous",
+    "url": "https://bit.ly/example",
+    "expected_risk": "low",
+    "required_rules": ["host.url_shortener"]
+  }
+]
